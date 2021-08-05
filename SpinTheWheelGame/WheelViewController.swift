@@ -69,7 +69,7 @@ class WheelViewController: UIViewController {
         let rotateView = CABasicAnimation()
         let randonAngle = arc4random_uniform(361) + 360
         rotateView.fromValue = 0
-        rotateView.toValue = 0.3
+        rotateView.toValue = -0.3
         rotateView.duration = 0.3
         rotateView.repeatCount = 9
         rotateView.speed = 3
