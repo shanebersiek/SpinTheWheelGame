@@ -24,20 +24,20 @@ class WheelViewController: UIViewController {
         createWheel()
         addtickerImage()
         customizeButton(button: spinButton)
-        view.backgroundColor = screenBackgroundColor
+        view.backgroundColor = colorPalate.screenBackgroundColor
         print("wheelrewards c = \(wheelRewards.count)")
     }
    
    
     //MARK: functions
     func customizeButton(button: UIButton){
-        button.backgroundColor = pinkButtonColor
+        button.backgroundColor = colorPalate.pinkButtonColor
+        button.roundedButton()
     }
     
     
     func addtickerImage(){
         guard let imageView = tickerImgView else {return}
-        
         self.view.addSubview(imageView)
     }
     
@@ -58,7 +58,8 @@ class WheelViewController: UIViewController {
         let randonAngle = arc4random_uniform(361) + 360
         rotateView.fromValue = 0
         rotateView.toValue = Float(randonAngle) * Float(M_PI) / 180.0
-        rotateView.duration = 1
+        rotateView.duration = 3
+        rotateView.speed = 2.9
         rotateView.repeatCount = 0
         rotateView.isRemovedOnCompletion = false
         rotateView.fillMode = CAMediaTimingFillMode.forwards
@@ -71,8 +72,8 @@ class WheelViewController: UIViewController {
         rotateView.fromValue = 0
         rotateView.toValue = -0.3
         rotateView.duration = 0.3
-        rotateView.repeatCount = 9
-        rotateView.speed = 3
+        rotateView.repeatCount = 8
+        rotateView.speed = 2.9
         rotateView.isRemovedOnCompletion = false
         rotateView.fillMode = CAMediaTimingFillMode.forwards
 

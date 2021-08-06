@@ -41,7 +41,7 @@ class Wheel : UIView {
     
     func addBackGroundToWheel(rewards: [Reward], rect: CGRect, color: UIColor) {
         guard rewards.count > 0 else {return}
-        var color:UIColor = wheelDarkererbackground
+        var color:UIColor = colorPalate.wheelDarkererbackground
         var increment = (100.0 / Float(rewards.count))
         var start: Float = 0.0
         var end: Float = Float(increment)
@@ -49,7 +49,7 @@ class Wheel : UIView {
         
         for i in rewards {
             drawSlice(rect, startPercent: CGFloat(start), endPercent: CGFloat(end), color: color, prizeNameTxt: "")
-            if  color ==  wheelDarkererbackground { color = wheelLighterbackground} else {color = wheelDarkererbackground}
+            if  color ==  colorPalate.wheelDarkererbackground { color = colorPalate.wheelLighterbackground} else {color = colorPalate.wheelDarkererbackground}
             start += Float(increment)
             end += Float(increment)
             count += 1

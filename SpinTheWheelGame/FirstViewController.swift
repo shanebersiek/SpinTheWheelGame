@@ -17,23 +17,28 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          getWheelRewards()
-         spinTheWheelBtn.backgroundColor = pinkButtonColor
-       
+         customizeButton()
     }
     
     @IBAction func spinTheWheelBtnTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "WheelViewController") as WheelViewController
+
         vc.wheelRewards = wheelRewards
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
+    func customizeButton(){
+        spinTheWheelBtn.backgroundColor = colorPalate.pinkButtonColor
+        spinTheWheelBtn.roundedButton()
+    }
+    
     func getWheelRewards(){
-        APIManager().fetchAllPosts { (result) in
+        APIManager().fetchAllPosts { [weak self] (result) in
             switch result {
             case .success(let rewards):
-                self.wheelRewards = rewards
+                self?.wheelRewards = rewards
             case .failure(let error):
                 print(error)
             }
